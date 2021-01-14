@@ -1,0 +1,24 @@
+{
+  "Creates a basic React Function Component": {
+    "prefix": "createFC",
+    "body": [
+      "import React from \"react\";",
+      "",
+      "interface ${TM_FILENAME_BASE}Props {",
+      "    /**",
+      "     * The identifier of the component.",
+      "     */",
+      "    identifier?: string;",
+      "}",
+      "",
+      "const ${TM_FILENAME_BASE}: React.FunctionComponent<${TM_FILENAME_BASE}Props> = ({ identifier }) => {",
+      "",
+      "    return <></>;",
+      "};",
+      "",
+      "export default ${TM_FILENAME_BASE};",
+      ""
+    ],
+    "description": "Creates a basic React Function Component"
+  }
+}
