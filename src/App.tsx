@@ -1,8 +1,13 @@
-import { PieChartOutlined, SettingOutlined } from "@ant-design/icons";
+import {
+  CalendarOutlined,
+  PieChartOutlined,
+  SettingOutlined
+} from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import "./index.css";
+import Calendar from "./pages/Calendar";
 import Dashboard from "./pages/Dashboard";
 import Settings from "./pages/Settings";
 
@@ -37,7 +42,10 @@ const App = () => {
             <Menu.Item key="index" icon={<PieChartOutlined />}>
               <Link to="/">Dashboard</Link>
             </Menu.Item>
-            <Menu.Item key="2" icon={<SettingOutlined />}>
+            <Menu.Item key="calendar" icon={<CalendarOutlined />}>
+              <Link to="/calendar">Calendar</Link>
+            </Menu.Item>
+            <Menu.Item key="settings" icon={<SettingOutlined />}>
               <Link to="/settings">User Settings</Link>
             </Menu.Item>
           </Menu>
@@ -47,6 +55,9 @@ const App = () => {
             <Switch>
               <Route exact path="/">
                 <Dashboard />
+              </Route>
+              <Route path="/calendar">
+                <Calendar />
               </Route>
               <Route path="/settings">
                 <Settings />
