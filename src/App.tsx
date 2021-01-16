@@ -1,56 +1,23 @@
-import {
-  CalendarOutlined,
-  PieChartOutlined,
-  SettingOutlined
-} from "@ant-design/icons";
-import { Layout, Menu } from "antd";
-import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { Layout } from "antd";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Footer from "./components/layout/Footer";
+import Header from "./components/layout/Header";
+import Sidebar from "./components/layout/Sidebar";
 import "./index.css";
 import Calendar from "./pages/Calendar";
 import Dashboard from "./pages/Dashboard";
 import Settings from "./pages/Settings";
 
-const { Content, Footer, Sider } = Layout;
+const { Content } = Layout;
 
 const App = () => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
-
-  const getSelectedMenu = (): Array<string> => {
-    const split = window.location.href.split("/");
-    const key = split[split.length - 1];
-
-    if (!key) return ["index"];
-
-    return [key];
-  };
-
   return (
     <Router>
       <Layout style={{ minHeight: "100vh" }}>
-        <Sider
-          collapsible
-          collapsed={isCollapsed}
-          onCollapse={(collapsed) => setIsCollapsed(collapsed)}
-        >
-          <div className="logo" />
-          <Menu
-            theme="dark"
-            defaultSelectedKeys={getSelectedMenu()}
-            mode="inline"
-          >
-            <Menu.Item key="index" icon={<PieChartOutlined />}>
-              <Link to="/">Dashboard</Link>
-            </Menu.Item>
-            <Menu.Item key="calendar" icon={<CalendarOutlined />}>
-              <Link to="/calendar">Calendar</Link>
-            </Menu.Item>
-            <Menu.Item key="settings" icon={<SettingOutlined />}>
-              <Link to="/settings">User Settings</Link>
-            </Menu.Item>
-          </Menu>
-        </Sider>
         <Layout className="site-layout">
+          <Sidebar />
+          <Header />
           <Content style={{ margin: "0 16px" }}>
             <Switch>
               <Route exact path="/">
@@ -64,9 +31,7 @@ const App = () => {
               </Route>
             </Switch>
           </Content>
-          <Footer style={{ textAlign: "center" }}>
-            Created by Maxime Antoine ©2021
-          </Footer>
+          <Footer />
         </Layout>
       </Layout>
     </Router>

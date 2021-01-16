@@ -25,3 +25,8 @@ code {
 .logo {
   height: 50px;
 }
+
+.site-layout-background {
+  background: #fff;
+  height: 50px;
+}
